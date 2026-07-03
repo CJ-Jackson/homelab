@@ -80,3 +80,5 @@ data:
     - hostname: linkding.cjjackson.dev
       service: http://linkding:9090
 
+    - service: http_status:404
+
