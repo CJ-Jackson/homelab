@@ -1,0 +1,27 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: traefik
+  namespace: traefik
+spec:
+  interval: 12h
+  chart:
+    spec:
+      chart: traefik
+      version: "41.0.1"
+      sourceRef:
+        kind: HelmRepository
+        name: traefik
+        namespace: traefik
+      interval: 12h
+  install:
+    crds: Create
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    crds: Create
+    remediation:
+      retries: 3
+  driftDetection:
+    mode: enabled
