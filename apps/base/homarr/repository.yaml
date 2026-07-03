@@ -9,4 +9,4 @@ spec:
     operation: copy
   url: oci://ghcr.io/homarr-labs/charts/homarr
   ref:
-    semver: "8.20.0"
+    semver: ">= 8.20.0"
