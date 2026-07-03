@@ -4,3 +4,5 @@ namespace: rustical
 resources:
   - configmap.yaml
   - ../../base/rustical/
+  - cloudflare-secret.yaml
+  - cloudflare.yaml

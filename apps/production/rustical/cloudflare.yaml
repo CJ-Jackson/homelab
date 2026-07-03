@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       app: cloudflared
-  replicas: 2 
+  replicas: 2
   template:
     metadata:
       labels:
@@ -16,7 +16,7 @@ spec:
       - name: cloudflared
         image: cloudflare/cloudflared:latest
         args:
-        - tunnel 
+        - tunnel
         - --config
         - /etc/cloudflared/config/config.yaml
         - run
@@ -52,7 +52,7 @@ metadata:
   name: cloudflared
 data:
   config.yaml: |
-    tunnel: ldprod
+    tunnel: rustical
 
     credentials-file: /etc/cloudflared/creds/credentials.json
 
@@ -60,8 +60,8 @@ data:
     no-autoupdate: true
 
     ingress:
-    - hostname: linkding.cjjackson.dev
-      service: http://linkding:9090
+    - hostname: smoky-bacon.cjjackson.dev
+    service: http://rustical:4000
 
     - service: http_status:404
 
