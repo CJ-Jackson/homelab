@@ -61,7 +61,7 @@ data:
 
     ingress:
     - hostname: smoky-bacon.cjjackson.dev
-    service: http://rustical:4000
+      service: http://rustical:4000
 
     - service: http_status:404
 
