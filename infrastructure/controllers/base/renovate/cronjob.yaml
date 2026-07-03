@@ -14,7 +14,7 @@ spec:
             - name: renovate
               image: renovate/renovate:latest
               args:
-                - CJ-Jackson/dev-cluster
+                - CJ-Jackson/homelab
 
               envFrom:
                 - secretRef:
