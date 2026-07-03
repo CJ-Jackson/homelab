@@ -1,0 +1,26 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: homarr
+spec:
+  interval: 12h
+  chartRef:
+    kind: OCIRepository
+    name: homarr
+    namespace: homarr
+  install:
+    crds: Create
+    remediation:
+      retries: 3
+  upgrade:
+    crds: Create
+    remediation:
+      retries: 3
+  driftDetection:
+    mode: enabled
+  values:
+    persistence:
+      homarrDatabase:
+        enabled: true
+        storageClassName: "default"
+        size: "1Gi"
