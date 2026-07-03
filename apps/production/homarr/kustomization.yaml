@@ -4,3 +4,5 @@ namespace: homarr
 resources:
   - homarr-secret.yaml
   - ../../base/homarr/
+  - cloudflare-secret.yaml
+  - cloudflare.yaml
