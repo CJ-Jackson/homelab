@@ -20,6 +20,10 @@ spec:
           name: rustical
           ports:
             - containerPort: 4000
+
+          securityContext:
+            allowPrivilegeEscalation: false
+
           volumeMounts:
             - mountPath: /var/lib/rustical
               name: rustical-data
