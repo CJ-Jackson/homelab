@@ -28,7 +28,7 @@ spec:
       volumes:
       - name: rustical-data
         persistentVolumeClaim:
-          claimName: rustical-data
+          claimName: rustical-data-longhorn-pvc
       - name: rustical-config
         configMap:
           name: rustical-config
