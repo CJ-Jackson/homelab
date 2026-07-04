@@ -22,6 +22,6 @@ spec:
     persistence:
       homarrDatabase:
         enabled: true
-        name: homarr-database-longhorn-pvc
+        # name: homarr-database-longhorn-pvc
         storageClassName: "longhorn"
         size: "1Gi"
