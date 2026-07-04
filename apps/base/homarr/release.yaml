@@ -23,6 +23,5 @@ spec:
       homarrDatabase:
         enabled: true
         name: homarr-database-longhorn-pvc
-        volumeClaimName: homarr-database-longhorn-pvc
         storageClassName: "longhorn"
         size: "1Gi"
