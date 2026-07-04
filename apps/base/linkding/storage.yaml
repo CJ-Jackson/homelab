@@ -14,10 +14,10 @@ kind: PersistentVolumeClaim
 metadata:
   name: linkding-data-longhorn-pvc
 spec:
-  replicas: 1
   accessModes:
     - ReadWriteOnce
   storageClassName: longhorn
   resources:
     requests:
       storage: 1Gi
+

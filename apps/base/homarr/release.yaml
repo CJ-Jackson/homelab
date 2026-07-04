@@ -22,5 +22,6 @@ spec:
     persistence:
       homarrDatabase:
         enabled: true
-        storageClassName: "local-path"
+        volumeClaimName: homarr-database-longhorn-pvc
+        storageClassName: "longhorn"
         size: "1Gi"
