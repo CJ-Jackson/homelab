@@ -36,6 +36,8 @@ spec:
             - web
             - --config
             - /etc/forgejo/app.ini
+            - --custom-path
+            - /var/lib/forgejo/custom
 
           securityContext:
             allowPrivilegeEscalation: false
