@@ -30,7 +30,8 @@ spec:
               name: ssh
               protocol: TCP
 
-          command: forgejo
+          command:
+            - forgejo
           args:
             - web
             - --config /etc/forgejo/app.ini
