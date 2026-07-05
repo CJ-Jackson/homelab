@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: forgejo
+  name: forgejo
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: forgejo
+  template:
+    metadata:
+      labels:
+        app: forgejo
+    spec:
+      securityContext:
+        fsGroup: 1000
+        runAsUser: 1000
+        runAsGroup: 1000
+
+      containers:
+        - image: codeberg.org/forgejo/forgejo:15.0.3
+          name: forgejo
+          ports:
+            - containerPort: 3000
+              name: http
+              protocol: TCP
+            - containerPort: 2222
+              name: ssh
+              protocol: TCP
+
+          command: forgejo
+          args:
+            - web
+            - --config /etc/forgejo/app.ini
+
+          securityContext:
+            allowPrivilegeEscalation: false
+
+          volumeMounts:
+            - mountPath: /var/lib/forgejo
+              name: forgejo-data
+            - mountPath: /etc/forgejo
+              name: forgejo-config
+      volumes:
+      - name: forgejo-data
+        persistentVolumeClaim:
+          claimName: forgejo-data-pvc
+      - name: forgejo-config
+        secret:
+          secretName: forgejo-config
+          items:
+          - key: "app.ini"
+            path: "app.ini"
