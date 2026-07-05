@@ -34,7 +34,8 @@ spec:
             - forgejo
           args:
             - web
-            - --config /etc/forgejo/app.ini
+            - --config
+            - /etc/forgejo/app.ini
 
           securityContext:
             allowPrivilegeEscalation: false
