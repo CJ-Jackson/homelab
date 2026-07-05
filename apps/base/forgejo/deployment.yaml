@@ -47,6 +47,9 @@ spec:
               name: forgejo-data
             - mountPath: /etc/forgejo
               name: forgejo-config
+            - mountPath: /script
+              name: script
+
       volumes:
       - name: forgejo-data
         persistentVolumeClaim:
@@ -57,3 +60,10 @@ spec:
           items:
           - key: "app.ini"
             path: "app.ini"
+      - name: script
+        configMap:
+          name: script-map
+          items:
+          - key: backup
+            path: backup
+            mode: 0755
