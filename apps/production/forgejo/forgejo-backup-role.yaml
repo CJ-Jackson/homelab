@@ -5,6 +5,7 @@ metadata:
 rules:
 - apiGroups:
   - ""
+  - "exec"
   resources:
   - pods
   verbs:
