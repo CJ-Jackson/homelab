@@ -7,6 +7,13 @@ rules:
   - ""
   resources:
   - pods
+  verbs:
+  - get
+  - list
+  - connect
+- apiGroups:
+  - "apps"
+  resources:
   - deployments
   verbs:
   - get
