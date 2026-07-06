@@ -5,13 +5,19 @@ metadata:
 rules:
 - apiGroups:
   - ""
-  - "exec"
   resources:
   - pods
   verbs:
   - get
   - list
-  - connect
+
+- apiGroups:
+  - ""
+  resources:
+  - pods/exec
+  verbs:
+  - create
+
 - apiGroups:
   - "apps"
   resources:
@@ -19,7 +25,6 @@ rules:
   verbs:
   - get
   - list
-  - connect
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
