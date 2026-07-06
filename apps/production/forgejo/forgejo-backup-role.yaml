@@ -1,0 +1,28 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: forgejo-backup-role
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  - deployments
+  verbs:
+  - get
+  - list
+  - connect
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: forgejo-backup-rolebinding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: forgejo-backup-role
+subjects:
+- apiGroup: rbac.authorization.k8s.io
+  kind: User
+  name: forgejo-backup
+

@@ -6,3 +6,4 @@ resources:
   - ../../base/forgejo/
   - cloudflare-secret.yaml
   - cloudflare.yaml
+  - forgejo-backup-role.yaml
