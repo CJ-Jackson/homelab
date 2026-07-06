@@ -16,4 +16,19 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: infrastructure-roles
+  namespace: flux-system
+spec:
+  interval: 1m0s
+  retryInterval: 1m
+  timeout: 5m
+  path: ./infrastructure/roles/production
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
 
