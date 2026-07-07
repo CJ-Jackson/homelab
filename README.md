@@ -2,7 +2,7 @@
 
 The manifest of the of my Kubernetes Homelab I got running at Home, hence Homelab.
 
-This project utilizes [Infrastructure as Code (IaC)](https://en.wikipedia.org/wiki/Infrastructure_as_code) and [GitOps](https://www.weave.works/technologies/gitops) principles to significantly leveraging FluxCD to streamline the management of my homelab’s self-hosted services. By defining infrastructure configurations as code and leveraging Git for version control and automated deployment, I can fully automate the provisioning of new services, continuously operate them with minimal manual intervention, and efficiently update existing configurations without downtime. This approach ensures consistency, repeatability, and reduces the risk of human error in managing my local development environment.
+This project utilizes [Infrastructure as Code (IaC)](https://en.wikipedia.org/wiki/Infrastructure_as_code) and [GitOps](https://www.weave.works/technologies/gitops) principles to significantly leveraging [FluxCD](https://fluxcd.io/) to streamline the management of my homelab’s self-hosted services. By defining infrastructure configurations as code and leveraging Git for version control and automated deployment, I can fully automate the provisioning of new services, continuously operate them with minimal manual intervention, and efficiently update existing configurations without downtime. This approach ensures consistency, repeatability, and reduces the risk of human error in managing my local development environment.
 
 ## What is a Homelab?
 
