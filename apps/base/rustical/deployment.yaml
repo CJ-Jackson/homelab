@@ -9,6 +9,9 @@ spec:
   selector:
     matchLabels:
       app: rustical
+  strategy:
+    rollingUpdate: null
+    type: Recreate
   template:
     metadata:
       labels:
