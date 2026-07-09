@@ -7,8 +7,6 @@ spec:
   selector:
     matchLabels:
       app: linkding
-  strategy:
-    type: Recreate
   template:
     metadata:
       labels:
