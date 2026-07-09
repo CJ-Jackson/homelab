@@ -22,7 +22,8 @@ spec:
 
           command:
             - sh
-            - /script/fix
+            - -c
+            - "mkdir -p /data/etc/local.d && chown -R 5984:5984 /data"
 
           securityContext:
             runAsUser: 0
@@ -30,8 +31,6 @@ spec:
           volumeMounts:
             - mountPath: /data
               name: obsidian-sync-data
-            - mountPath: /script
-              name: script
 
       containers:
         - image: couchdb:3.5.2.1
@@ -59,11 +58,4 @@ spec:
       - name: obsidian-sync-data
         persistentVolumeClaim:
           claimName: obsidian-sync-data-pvc
-      - name: script
-        configMap:
-          name: script-map
-          items:
-          - key: backup
-            path: backup
-            mode: 0755
 
