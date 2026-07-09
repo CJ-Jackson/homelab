@@ -23,7 +23,7 @@ spec:
           command:
             - sh
             - -c
-            - "mkdir -p /data/etc/local.d && chown -R 5984:5984 /data"
+            - "chown -R 5984:5984 /data"
 
           securityContext:
             runAsUser: 0
@@ -51,8 +51,12 @@ spec:
             runAsGroup: 5984
 
           volumeMounts:
-            - mountPath: /opt/couchdb
+            - mountPath: /opt/couchdb/data
               name: obsidian-sync-data
+              subPath: /data
+            - mountPath: /opt/couchdb/etc/local.d
+              name: obsidian-sync-data
+              subPath: /local.d
 
       volumes:
       - name: obsidian-sync-data
