@@ -9,6 +9,8 @@ spec:
   selector:
     matchLabels:
       app: forgejo
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:
@@ -41,6 +43,24 @@ spec:
 
           securityContext:
             allowPrivilegeEscalation: false
+
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /api/healthz
+              port: 3000
+            initialDelaySeconds: 60
+            periodSeconds: 30
+            timeoutSeconds: 5
+
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /api/healthz
+              port: 3000
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
 
           volumeMounts:
             - mountPath: /var/lib/forgejo
