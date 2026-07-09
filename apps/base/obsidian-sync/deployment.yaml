@@ -53,10 +53,10 @@ spec:
           volumeMounts:
             - mountPath: /opt/couchdb/data
               name: obsidian-sync-data
-              subPath: data
+              subPath: data/
             - mountPath: /opt/couchdb/etc/local.d
               name: obsidian-sync-data
-              subPath: local.d
+              subPath: local.d/
 
       volumes:
       - name: obsidian-sync-data
