@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: obsidian-sync
+  name: obsidian-sync
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: obsidian-sync
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: obsidian-sync
+    spec:
+      initContainers:
+        - image: busybox:1.38.0
+          name: fix-permissions
+
+          command:
+            - sh
+            - -c
+            - chown -R 5984:5984 /data
+
+          securityContext:
+            runAsUser: 0
+
+          volumeMounts:
+            - mountPath: /data
+              name: obsidian-sync-data
+
+      containers:
+        - image: couchdb:3.5.2.1
+          name: obsidian-sync
+          ports:
+            - containerPort: 5984 
+              name: http
+              protocol: TCP
+
+          envFrom:
+            - secretRef:
+                name: couchdb-credentails-secret
+
+          securityContext:
+            allowPrivilegeEscalation: false
+            fsGroup: 5984
+            runAsUser: 5984
+            runAsGroup: 5984
+
+          volumeMounts:
+            - mountPath: /opt/couchdb
+              name: obsidian-sync-data
+
+      volumes:
+      - name: obsidian-sync-data
+        persistentVolumeClaim:
+          claimName: obsidian-sync-data-pvc
+

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: obsidian-sync
+spec:
+  ports:
+    - port: 80
+      name: http
+      protocol: TCP
+      targetPort: 5984
+  selector:
+    app: obsidian-sync
+  type: ClusterIP
