@@ -4,5 +4,4 @@ resources:
   - forgejo
   - homarr
   - linkding
-  # - obsidian-sync
   - rustical
