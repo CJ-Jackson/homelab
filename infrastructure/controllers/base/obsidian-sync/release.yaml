@@ -1,0 +1,32 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: couchdb-release
+spec:
+  chart:
+    spec:
+      chart: couchdb
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: couchdb-repo
+      version: v4.6.3
+  interval: 1h
+
+  valuesFrom:
+    - kind: Secret
+      name: couchdb-values-secret 
+
+  values:
+    clusterSize: 1
+    
+    persistentVolume:
+      enabled: true
+      accessModes:
+        - ReadWriteOnce
+      size: 20Gi
+      storageClass: "longhorn"
+
+    couchdbConfig:
+      couchdb:
+        uuid: ae912c7a2bee476cb3637673316facbc
