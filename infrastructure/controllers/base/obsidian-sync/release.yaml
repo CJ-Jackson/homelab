@@ -27,6 +27,6 @@ spec:
       size: 20Gi
       storageClass: "longhorn"
 
-    couchdbConfig:
-      couchdb:
-        uuid: ae912c7a2bee476cb3637673316facbc
+    erlangFlags:
+      name: couchdb
+      setcookie: monster
