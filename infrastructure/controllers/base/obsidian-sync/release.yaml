@@ -21,8 +21,8 @@ spec:
   values:
     clusterSize: 1
 
-    autoSetup:
-      enabled: true
+    #autoSetup:
+    #  enabled: true
     
     persistentVolume:
       enabled: true
