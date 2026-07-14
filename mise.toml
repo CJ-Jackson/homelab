@@ -2,3 +2,4 @@
 flux2 = "2.9.2"
 k9s = "latest"
 kubectl = "latest"
+sops = "latest"
