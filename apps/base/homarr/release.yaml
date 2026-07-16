@@ -30,5 +30,5 @@ spec:
         drop:
           - ALL
       readOnlyRootFilesystem: true
-      runAsNonRoot: true
+      runAsNonRoot: false
       runAsUser: 1000
