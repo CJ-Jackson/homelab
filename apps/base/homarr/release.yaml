@@ -25,10 +25,12 @@ spec:
         # name: homarr-database-longhorn-pvc
         storageClassName: "longhorn"
         size: "2Gi"
+    podSecurityContext:
+      fsGroup: 2000
     securityContext:
       capabilities:
         drop:
           - ALL
       readOnlyRootFilesystem: true
-      runAsNonRoot: false
+      runAsNonRoot: true
       runAsUser: 1000
