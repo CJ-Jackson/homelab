@@ -25,3 +25,10 @@ spec:
         # name: homarr-database-longhorn-pvc
         storageClassName: "longhorn"
         size: "1Gi"
+    securityContext:
+      capabilities:
+      drop:
+        - ALL
+      readOnlyRootFilesystem: true
+      runAsNonRoot: true
+      runAsUser: 1000
