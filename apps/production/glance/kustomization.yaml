@@ -5,5 +5,5 @@ resources:
   - ghcr-registry-secret.yaml
   - glance-secret.yaml
   - ../../base/glance/
-  #- cloudflare-secret.yaml
-  #- cloudflare.yaml
+  - cloudflare-secret.yaml
+  - cloudflare.yaml
