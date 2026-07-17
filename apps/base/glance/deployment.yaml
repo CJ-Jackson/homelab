@@ -15,8 +15,7 @@ spec:
       containers:
         - name: glance
           image: ghcr.io/cj-jackson/cjglance:latest
-          imagePullSecrets:
-            - name: ghcr-registry-secret
+
           ports:
             - containerPort: 8080
 
@@ -29,6 +28,9 @@ spec:
           volumeMounts:
             - mountPath: /app/key
               name: glance-key
+
+      imagePullSecrets:
+        - name: ghcr-registry-secret
 
       volumes:
         - name: glance-key
