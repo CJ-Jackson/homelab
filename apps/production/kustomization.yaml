@@ -3,6 +3,5 @@ kind: Kustomization
 resources:
   - forgejo
   - glance
-  # - homarr
   - linkding
   - rustical
