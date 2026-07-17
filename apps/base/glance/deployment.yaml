@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: glance
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: glance
+  template:
+    metadata:
+      labels:
+        app: glance
+    spec:
+      containers:
+        - name: glance
+          image: ghcr.io/cj-jackson/cjglance:latest
+          imagePullSecrets:
+            - name: ghcr-registry-secret
+          ports:
+            - containerPort: 8080
+
+          securityContext:
+            allowPrivilegeEscalation: false
+            fsGroup: 1500
+            runAsUser: 1500
+            runAsGroup: 1500
+
+          volumeMounts:
+            - mountPath: /app/key
+              name: glance-key
+
+      volumes:
+        - name: glance-key
+          secret:
+            secretName: glance-secret
+            items:
+              - key: "glance.txt"
+                path: "glance.txt"
+                mode: 0444

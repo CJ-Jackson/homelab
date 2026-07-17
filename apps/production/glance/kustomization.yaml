@@ -1,0 +1,9 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: glance
+resources:
+  - ghcr-registry-secret.yaml
+  - glance-secret.yaml
+  - ../../base/glance/
+  #- cloudflare-secret.yaml
+  #- cloudflare.yaml
