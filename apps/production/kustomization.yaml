@@ -3,6 +3,6 @@ kind: Kustomization
 resources:
   - forgejo
   - glance
-  #- immich
+  - immich
   - linkding
   - rustical
