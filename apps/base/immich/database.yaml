@@ -1,0 +1,70 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: immich-database
+spec:
+  instances: 1
+
+  imageName: ghcr.io/cloudnative-pg/postgresql:18-standard-trixie
+
+  postgresql:
+    synchronous:
+      method: any
+      number: 1
+      dataDurability: required
+    parameters:
+      max_connections: "200"
+      shared_buffers: "256MB"
+      effective_cache_size: "768MB"
+      work_mem: "4MB"
+      maintenance_work_mem: "64MB"
+    shared_preload_libraries:
+      - "vchord.so"
+    extensions:
+      - name: vchord
+        image:
+          reference: ghcr.io/tensorchord/vchord-scratch:pg18-v1.1.1
+        dynamic_library_path:
+          - /usr/lib/postgresql/18/lib
+        extension_control_path:
+          - /usr/share/postgresql/18/
+
+  bootstrap:
+    initdb:
+      database: app
+      owner: app
+      secret:
+        name: postgres-app-credentials
+
+  storage:
+    size: 10Gi
+    storageClass: longhorn
+
+  superuserSecret:
+    name: postgres-superuser-secret
+
+  monitoring:
+    enablePodMonitor: true
+
+  affinity:
+    podAntiAffinityType: preferred
+    topologyKey: kubernetes.io/hostname
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: immich-database
+spec:
+  name: app
+  owner: app
+  cluster:
+    name: immich-database
+  extensions:
+    - name: vector
+      ensure: present
+    - name: vchord
+      ensure: present
+    - name: earthdistance
+      ensure: present
+    - name: cube
+      ensure: present
