@@ -4,4 +4,5 @@ namespace: immich
 resources:
   - postgres-app-credentails.yaml
   - postgres-superuser-secret.yaml
+  - immich-server-secret.yaml
   - ../../base/immich/
