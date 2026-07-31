@@ -6,3 +6,5 @@ resources:
   - postgres-superuser-secret.yaml
   - immich-server-secret.yaml
   - ../../base/immich/
+  - cloudflare-secret.yaml
+  - cloudflare.yaml
