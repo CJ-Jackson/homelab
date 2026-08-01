@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: glance
-          image: ghcr.io/cj-jackson/cjglance:v2026.199.51546
+          image: ghcr.io/cj-jackson/cjglance:v2026.213.42963
 
           ports:
             - containerPort: 8080
