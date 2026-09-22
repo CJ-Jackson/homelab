@@ -19,7 +19,7 @@ spec:
     spec:
       enableServiceLinks: false
       containers:
-        - image: ghcr.io/lennart-k/rustical:0.16.2
+        - image: ghcr.io/lennart-k/rustical:0.16.3
           name: rustical
           ports:
             - containerPort: 4000
