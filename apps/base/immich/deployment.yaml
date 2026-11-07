@@ -250,7 +250,7 @@ spec:
           envFrom:
             - secretRef:
                 name: immich-server-secret
-          image: ghcr.io/immich-app/immich-server:v3.3.5
+          image: ghcr.io/immich-app/immich-server:v3.3.6
           imagePullPolicy: IfNotPresent
           securityContext:
             fsGroup: 1000
