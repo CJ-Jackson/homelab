@@ -15,8 +15,8 @@ data:
     enabled = true
     allow_password_login = true
 
-    [tracing]
-    opentelemetry = false
+    #[tracing]
+    #opentelemetry = false
 
     [dav_push]
     enabled = true
